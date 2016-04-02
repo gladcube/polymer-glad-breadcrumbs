@@ -1,0 +1,16 @@
+link(rel="import" href="../../bower_components/polymer/polymer.html")
+
+dom-module#glad-breadcrumbs
+  style(is="custom-style").
+    :host > span:not(:last-of-type):after {
+      content: ">";
+      margin: 0 1em;
+    }
+  template
+    template(is="dom-repeat" items="[[items]]")
+      template(is="dom-if" if="[[item.href]]")
+        span
+          a(href$="#[[item.href]]") [[item.name]]
+      template(is="dom-if" if="[[!item.href]]")
+        span [[item.name]]
+
